@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Index = () => {
   const [videoFile, setVideoFile] = useState(null);
@@ -33,6 +34,24 @@ const Index = () => {
     }, 3000);
   };
 
+  const handleUploadToInstagram = () => {
+    if (!editedVideo) {
+      toast("Please process a video first.");
+      return;
+    }
+    // Implement Instagram upload functionality here
+    toast("Uploading to Instagram...");
+  };
+
+  const handleUploadToFacebook = () => {
+    if (!editedVideo) {
+      toast("Please process a video first.");
+      return;
+    }
+    // Implement Facebook upload functionality here
+    toast("Uploading to Facebook...");
+  };
+
   return (
     <div className="flex flex-col items-center space-y-4">
       <h1 className="text-3xl">Video Upload and Preview</h1>
@@ -59,6 +78,16 @@ const Index = () => {
           <a href={editedVideo} download="edited-video.mp4">
             <Button>Download Edited Video</Button>
           </a>
+          <div className="flex space-x-4 mt-4">
+            <Button onClick={handleUploadToInstagram} className="flex items-center space-x-2">
+              <FaInstagram />
+              <span>Upload to Instagram</span>
+            </Button>
+            <Button onClick={handleUploadToFacebook} className="flex items-center space-x-2">
+              <FaFacebook />
+              <span>Upload to Facebook</span>
+            </Button>
+          </div>
         </div>
       )}
     </div>
